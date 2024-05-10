@@ -23,13 +23,14 @@ const CharactersPage = () => {
     useEffect(() => {
         const fetchCharacters = async () => {
             try {
-                const response = await fetch(`https://swapi.dev/api/people/?page=${currentPage}`);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch characters');
+                const promises = [];
+                for (let i = 1; i <= 9; i++) {
+                    promises.push(fetch(`https://swapi.dev/api/people/?page=${i}`));
                 }
-                const data = await response.json();
-                setCharacters(data.results);
-                setTotalPages(Math.ceil(data.count / 10)); // Calcula el total de páginas, 10 personas por página
+                const responses = await Promise.all(promises);
+                const data = await Promise.all(responses.map(response => response.json()));
+                const allCharacters = data.flatMap(page => page.results);
+                setCharacters(allCharacters);
                 setLoading(false);
             } catch (error) {
                 setError(error);
@@ -38,21 +39,29 @@ const CharactersPage = () => {
         };
 
         fetchCharacters();
-    }, [currentPage]);
+    }, []);
 
     useEffect(() => {
-        // Filtrar personajes
         let filtered = characters.filter(character => {
-            if (filterOptions.eyeColor !== 'all' && character.eye_color !== filterOptions.eyeColor) {
-                return false;
+            if (filterOptions.eyeColor !== 'all') {
+                const eyeColors = character.eye_color.split(',').map(color => color.trim());
+                if (!eyeColors.includes(filterOptions.eyeColor)) {
+                    return false;
+                }
             }
             if (filterOptions.gender !== 'all' && character.gender !== filterOptions.gender) {
                 return false;
             }
             return true;
         });
+
         setFilteredCharacters(filtered);
+        const totalPages = Math.ceil(filtered.length / 10);
+        setTotalPages(totalPages);
+        setCurrentPage(1);
     }, [characters, filterOptions]);
+
+    const paginatedCharacters = filteredCharacters.slice((currentPage - 1) * 10, currentPage * 10);
 
     const handleNextPage = () => {
         setCurrentPage(prevPage => prevPage + 1);
@@ -67,8 +76,6 @@ const CharactersPage = () => {
             ...prevOptions,
             [type]: value
         }));
-        // Regresar a la primera página cuando se cambian los filtros
-        setCurrentPage(1);
     };
 
     const handleResetFilters = () => {
@@ -79,11 +86,11 @@ const CharactersPage = () => {
     };
 
     return (
-        <div>
+        <div style={{ position: 'relative' }}>
             <Banner />
             <Navbar />
-            <div className="h-0.5 bg-white w-full"></div>
-            <h1 className="text-4xl text-center mt-4"> PERSONAJES </h1>
+            <div className="h-0.5 bg-white w-full mb-6"></div>
+            <h1 className="text-4xl text-center font-bold mb-6"> PERSONAJES </h1>
 
             <div className="flex justify-end mr-4">
                 <div className="relative">
@@ -93,7 +100,7 @@ const CharactersPage = () => {
                         onClick={() => setShowFilterMenu(!showFilterMenu)}
                     />
                     {showFilterMenu && (
-                        <div className="absolute right-0 mt-2 bg-white border border-gray-200 rounded-md shadow-md p-2">
+                        <div className="absolute top-10 right-0 mt-2 bg-white border border-gray-200 rounded-md shadow-md p-2 z-10">
                             <div>
                                 <label htmlFor="eyeColor" className="mr-2 text-black"> Color de ojos </label>
                                 <select
@@ -103,11 +110,18 @@ const CharactersPage = () => {
                                     onChange={e => handleFilterOptionChange('eyeColor', e.target.value)}
                                 >
                                     <option value="all">Todos</option>
+                                    <option value="black">Negro</option>
                                     <option value="blue">Azul</option>
                                     <option value="brown">Marrón</option>
                                     <option value="green">Verde</option>
                                     <option value="yellow">Amarillo</option>
                                     <option value="red">Rojo</option>
+                                    <option value="white">Blanco</option>
+                                    <option value="pink">Rosa</option>
+                                    <option value="gold">Oro</option>
+                                    <option value="blue-gray">Gris-azulado</option>
+                                    <option value="orange">Naranja</option>
+                                    <option value="hazel">Avellana</option>
                                 </select>
                             </div>
                             <div className="mt-2">
@@ -121,7 +135,8 @@ const CharactersPage = () => {
                                     <option value="all">Todos</option>
                                     <option value="male">Masculino</option>
                                     <option value="female">Femenino</option>
-                                    <option value="n/a">N/A</option>
+                                    <option value="hermaphrodite">Hermafrodita</option>
+                                    <option value="n/a">No especificado</option>
                                 </select>
                             </div>
                             <button onClick={handleResetFilters} className="mt-2 px-2 py-1 bg-gray-200 hover:bg-gray-300 rounded-md text-black">Restablecer</button>
@@ -132,19 +147,19 @@ const CharactersPage = () => {
 
             {loading && (
                 <div className="flex justify-center mt-4">
-                    <FontAwesomeIcon icon={faSpinner} spin className="text-4xl text-white" /> {/* Rueda de cargando color blanco */}
+                    <FontAwesomeIcon icon={faSpinner} spin className="text-4xl text-white" />
                 </div>
             )}
 
             {!loading && (
                 <div className="flex flex-wrap justify-center mt-4">
-                    {filteredCharacters.map(character => (
+                    {paginatedCharacters.map(character => (
                         <Link key={character.url} href={`/character/${character.url.split('/').slice(-2)[0]}`} legacyBehavior>
-                            <a className="flex flex-col items-center justify-center space-y-2 m-2 w-1/3 sm:w-1/4 md:w-1/6 lg:w-1/6 xl:w-1/6 p-2">
+                            <a className="flex flex-col items-center justify-center space-y-2 m-2 w-1/3 sm:w-1/4 md:w-1/6 lg:w-1/6 xl:w-1/6 p-2 hover:bg-white hover:bg-opacity-15 rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105 relative">
                                 <div className="h-80 flex flex-col">
-                                    <img src="/images/characters-images/generic-image.png" alt="Imagen genérica de personaje" className="w-38 h-auto" />
+                                    <img src="/images/characters-images/generic-image.png" alt="Imagen genérica de personaje" className="w-38 h-auto mb-3" />
                                     <div className="text-center">
-                                        <h2 className="text-lg">{character.name}</h2>
+                                        <h2 className="text-lg font-bold">{character.name}</h2>
                                         {character.eye_color !== 'n/a' && character.eye_color !== 'unknown' && (
                                             <p>Color de ojos: {character.eye_color}</p>
                                         )}
