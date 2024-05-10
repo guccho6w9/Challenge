@@ -53,10 +53,10 @@ function HomePage() {
             <div className="h-0.5 bg-white w-full mb-3"></div>
             <div className="text-center mt-8">
                 <h1 className="text-4xl font-bold">PELÍCULAS DESTACADAS </h1>
-                <div className="carousel relative w-200">
+                <div className="carousel relative w-200 mb-40">
 
-                    <div className="relative">
-                        <Link legacyBehavior href={`/films/${images[currentImage].filmId}` }>
+                    <div className="relative ">
+                        <Link legacyBehavior href={`/films/${images[currentImage].filmId}`}>
                             <a>
                                 <img src={images[currentImage].src} alt={`Slide ${currentImage + 1}`} className="w-full h-auto rounded-lg" />
                             </a>
@@ -78,19 +78,27 @@ function HomePage() {
                     </button>
 
                     {/* Puntos circulares para desplazarse entre imágenes */}
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2 mb-2">
                         {/* Crear puntos para cada imagen */}
-                        {images.map((_, index) => (
-                            <FontAwesomeIcon
-                                key={index}
-                                icon={faCircle}
-                                className={`text-lg sm:text-xl lg:text-2xl xl:text-3xl cursor-pointer ${currentImage === index ? 'text-white' : 'text-gray-400'} mt-20`}
-                                onClick={() => handleImageClick(index)}
-                            />
+                        {images.map((image, index) => (
+                            <div key={index} onClick={() => handleImageClick(index)}>
+                                {/* Vista previa de la imagen en pantallas grandes */}
+                                <img
+                                    src={image.src}
+                                    alt={`Slide ${index + 1}`}
+                                    className={`h-12 w-auto cursor-pointer ${currentImage === index ? 'blur' : ''} hidden lg:block mb-50`}
+                                />
+                                {/* Puntos en pantallas pequeñas */}
+                                <FontAwesomeIcon
+                                    icon={faCircle}
+                                    className={`text-lg sm:text-xl lg:text-2xl xl:text-3xl cursor-pointer ${currentImage === index ? 'text-white' : 'text-gray-400'} lg:hidden mt-40`}
+                                />
+                            </div>
                         ))}
                     </div>
 
                 </div>
+                <h2> hola </h2>
             </div>
             <Footer />
         </div>
