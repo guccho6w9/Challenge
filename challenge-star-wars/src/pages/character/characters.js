@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Banner from '@/pages/banner';
 import Navbar from '@/pages/navbar';
 import Footer from '@/pages/footer';
@@ -67,6 +67,8 @@ const CharactersPage = () => {
             ...prevOptions,
             [type]: value
         }));
+        // Regresar a la primera página cuando se cambian los filtros
+        setCurrentPage(1);
     };
 
     const handleResetFilters = () => {
@@ -81,21 +83,17 @@ const CharactersPage = () => {
             <Banner />
             <Navbar />
             <div className="h-0.5 bg-white w-full"></div>
-            <h1 className="text-4xl  text-center mt-4"> PERSONAJES </h1>
-
+            <h1 className="text-4xl text-center mt-4"> PERSONAJES </h1>
 
             <div className="flex justify-end mr-4">
-                {/* Icono de filtro */}
                 <div className="relative">
                     <FontAwesomeIcon
                         icon={faFilter}
                         className="text-gray-500 cursor-pointer"
                         onClick={() => setShowFilterMenu(!showFilterMenu)}
                     />
-                    {/* Menú desplegable de filtro */}
                     {showFilterMenu && (
                         <div className="absolute right-0 mt-2 bg-white border border-gray-200 rounded-md shadow-md p-2">
-                            {/* Filtro por color de ojos */}
                             <div>
                                 <label htmlFor="eyeColor" className="mr-2 text-black"> Color de ojos </label>
                                 <select
@@ -112,7 +110,6 @@ const CharactersPage = () => {
                                     <option value="red">Rojo</option>
                                 </select>
                             </div>
-                            {/* Filtro por género */}
                             <div className="mt-2">
                                 <label htmlFor="gender" className="mr-2 text-black"> Género </label>
                                 <select
@@ -127,15 +124,18 @@ const CharactersPage = () => {
                                     <option value="n/a">N/A</option>
                                 </select>
                             </div>
-                            {/* Botón para restablecer los filtros */}
                             <button onClick={handleResetFilters} className="mt-2 px-2 py-1 bg-gray-200 hover:bg-gray-300 rounded-md text-black">Restablecer</button>
                         </div>
                     )}
                 </div>
             </div>
 
+            {loading && (
+                <div className="flex justify-center mt-4">
+                    <FontAwesomeIcon icon={faSpinner} spin className="text-4xl text-white" /> {/* Rueda de cargando color blanco */}
+                </div>
+            )}
 
-            {loading && <p className="text-center">Cargando...</p>}
             {!loading && (
                 <div className="flex flex-wrap justify-center mt-4">
                     {filteredCharacters.map(character => (
@@ -158,21 +158,20 @@ const CharactersPage = () => {
                     ))}
                 </div>
             )}
-            {/* Botones de paginación */}
+
             <div className="flex justify-center mt-4">
                 {currentPage > 1 && (
-                    <button onClick={handlePrevPage} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4">Anterior</button>
+                    <button onClick={handlePrevPage} className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-4 border border-white">Anterior</button>
                 )}
                 {currentPage < totalPages && (
-                    <button onClick={handleNextPage} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Siguiente</button>
+                    <button onClick={handleNextPage} className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded border border-white">Siguiente</button>
                 )}
             </div>
+
             <Footer />
-            {/* Manejo de errores */}
             {error && <p>Error al cargar los personajes: {error.message}</p>}
         </div>
     );
 };
 
 export default CharactersPage;
-
