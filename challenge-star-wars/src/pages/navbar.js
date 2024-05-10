@@ -6,10 +6,10 @@ const Navbar = () => {
             {/* Botones para ver películas y personajes */}
             <div className="flex space-x-4">
                 <Link href="/films/films" legacyBehavior>
-                    <a className="hover:text-gray-300"> Películas </a>
+                    <a className="text-gray-300 hover:text-white font-bold"> PELÍCULAS </a>
                 </Link>
                 <Link href="/character/characters" legacyBehavior>
-                    <a className="hover:text-gray-300"> Personajes </a>
+                    <a className="text-gray-300 hover:text-white font-bold"> PERSONAJES </a>
                 </Link>
             </div>
             
