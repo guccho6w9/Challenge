@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <footer className="bg-gray-800 text-white text-center py-4">
+        <footer className="bg-gray-800 bg-transparent text-white text-center py-4">
             <p>TM &amp; © Lucasfilm Ltd. All Rights Reserved</p>
             <p>
                 Hecho por Gustavo A. Quiroga |{' '}
