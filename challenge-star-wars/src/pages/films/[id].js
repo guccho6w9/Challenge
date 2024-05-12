@@ -3,10 +3,12 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import '@/app/globals.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilter, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import Banner from '@/pages/banner';
-import Navbar from '@/pages/navbar';
-import Footer from '@/pages/footer';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import Header from '@/components/header'; //importado banner.js
+import Navbar from '@/components/navbar'; //importado navbar.js
+import Footer from '@/components/footer'; //importado footer.js
+
+
 
 const FilmDetailPage = () => {
     const router = useRouter();
@@ -15,6 +17,9 @@ const FilmDetailPage = () => {
     const [loading, setLoading] = useState(true); // Estado para controlar la carga de datos
     const [error, setError] = useState(null);
 
+
+    //hook para traer la pelicula segun el id de la api, se traeran tambien la url de los personajes de la pelicula para mostrar sus datos
+    // rueda de carga implementada
     useEffect(() => {
         const fetchFilm = async () => {
             try {
@@ -22,7 +27,7 @@ const FilmDetailPage = () => {
                 const filmResponse = await fetch(`https://swapi.dev/api/films/${filmId}/`);
                 const filmData = await filmResponse.json();
                 setFilm(filmData);
-
+                
                 const charactersData = await Promise.all(
                     filmData.characters.map(async (characterUrl) => {
                         const response = await fetch(characterUrl);
@@ -30,20 +35,21 @@ const FilmDetailPage = () => {
                     })
                 );
                 setCharacters(charactersData);
-                setLoading(false); // Marcar como completada la carga de datos
+                setLoading(false); 
             } catch (error) {
                 setError(error);
-                setLoading(false); // Marcar como completada la carga de datos
+                setLoading(false);
             }
         };
 
         fetchFilm();
     }, [router.query.id]);
 
+    //rueda de carga temporal, se asegura de que se traigan todos los datos antes de mostrar la pagina real
     if (loading) {
         return (
             <div>
-                <Banner />
+                <Header />
                 <Navbar />
                 <div className="h-0.5 bg-white w-full"></div>
                 <div className="flex justify-center mt-4">
@@ -54,16 +60,23 @@ const FilmDetailPage = () => {
         );
     }
 
+    //en algun caso de error de conexion se visualiza este mensaje
     if (!film) {
         return <div>No se pudo cargar la película.</div>;
     }
 
     return (
         <div>
-            <Banner />
+            <Header />
             <Navbar />
+
+            {/* linea blanca que separa el navbar del body */}
             <div className="h-0.5 bg-white w-full"></div>
+
+            
             <div className="container mx-auto py-8">
+
+                {/* caja con la info de la pelicula */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
                         <img className="h-auto w-full" src="/images/films-images/generic-image.png" alt="Imagen genérica" />
@@ -75,6 +88,8 @@ const FilmDetailPage = () => {
                         <p>Opening crawl: {film.opening_crawl}</p>
                     </div>
                 </div>
+
+                {/* caja con los personajes */}
                 <div>
                     <div className="h-0.5 bg-white w-full mb-6"></div>
                     <h2 className="text-3xl font-bold mb-5"> Personajes </h2>
