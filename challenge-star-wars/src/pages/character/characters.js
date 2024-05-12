@@ -121,8 +121,12 @@ const CharactersPage = () => {
             <Header />
             <Navbar />
             <div className="h-0.5 bg-white w-full mb-6"></div>
+            {/* titulo de pagina */}
             <h1 className="text-4xl text-center font-bold mb-6"> PERSONAJES </h1>
 
+
+
+            {/* Icono y menu desplegable de filtrado */}
             <div className="flex justify-end mr-4">
                 <div className="relative">
                     <FontAwesomeIcon
@@ -176,13 +180,14 @@ const CharactersPage = () => {
                 </div>
             </div>
 
+            {/* rueda de carga */}
             {loading && (
                 <div className="flex justify-center mt-4">
                     <FontAwesomeIcon icon={faSpinner} spin className="text-4xl text-white" />
                 </div>
             )}
 
-            {!loading && filteredCharacters.length === 0 ? ( // Check if there are no matches
+            {!loading && filteredCharacters.length === 0 ? ( // Si no hay resultados para la busqueda se agrega un mensaje notificandolo
                 <div className="flex flex-col items-center mt-4">
                     <img src="/images/characters-images/no-match.png" alt="No hay coincidencias" className="h-60 w-60 mb-4" />
                     <p className='mb-3 text-center'>"¡Meesa buscando, pero no meesa encontrar nada! ¡Parece que estamos en el lugar equivocado!"</p>
@@ -191,13 +196,15 @@ const CharactersPage = () => {
         
                 </div>
             ) : (
-                <div className="flex flex-wrap justify-center mt-4 mb-10">
+                
+                <div className="flex flex-wrap justify-center mt-4 mb-10">{/* caja de personajes */}
                     {paginatedCharacters.map((character, index) => (
                         <Link key={character.url} href={`/character/${character.url.split('/').slice(-2)[0]}`} legacyBehavior>
 
-                            {/* caja de personajes, mostrara 5 personajes por fila en pantallas grandes, 3 en tables y 2 en celulares. tiene efecto hover */}
+                            {/* mostrara 5 personajes por fila en pantallas grandes, 3 en tables y 2 en celulares. tiene efecto hover */}
                             <a
-                                className="flex flex-col items-center justify-center space-y-2 m-2 w-1/3 sm:w-1/5 md:w-1/4 lg:w-1/6 xl:w-1/5 p-2 hover:bg-white hover:bg-opacity-15 rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105 relative"
+                          
+                                className=" flex flex-col items-center justify-center space-y-2 m-2 w-1/3 sm:w-1/5 md:w-1/4 lg:w-1/6 xl:w-1/6 2xl:w-1/6 p-2 hover:bg-white hover:bg-opacity-15 rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105 relative"
                                 onMouseEnter={() => handleCharacterMouseEnter(index)}
                                 onMouseLeave={handleCharacterMouseLeave}
                             >
@@ -205,10 +212,14 @@ const CharactersPage = () => {
                                 <div className="h-80 flex flex-col">
                                     <img src="/images/characters-images/generic-image.png" alt="Imagen genérica de personaje" className="w-38 h-auto mb-3" />
                                     <div className="text-center">
+                                        {/* nombre del personaje */}
                                         <h2 className="text-lg font-bold">{character.name}</h2>
+
+                                        {/* color de ojos, se asegura que el valor no sea nulo */}
                                         {character.eye_color !== 'n/a' && character.eye_color !== 'unknown' && (
                                             <p>Color de ojos: {character.eye_color}</p>
                                         )}
+                                        {/* genero, se asegura que el valor no sea nulo */}
                                         {character.gender !== 'n/a' && character.gender !== 'unknown' && (
                                             <p>Género: {character.gender}</p>
                                         )}
@@ -231,7 +242,7 @@ const CharactersPage = () => {
             )}
 
             {/* botones para moverse entre el paginado */}
-            <div className="flex justify-center mt-4">
+            <div className="flex justify-center mt-4 mb-40">
                 {currentPage > 1 && (
                     <button onClick={handlePrevPage} className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-4 border border-white">Anterior</button>
                 )}

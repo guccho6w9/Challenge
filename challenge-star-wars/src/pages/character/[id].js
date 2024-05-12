@@ -31,12 +31,12 @@ const CharacterDetailPage = () => {
     }, [id]);
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center min-h-screen">
             <Header />
             <Navbar />
-            <div className="h-0.5 bg-white w-full" ></div>
+            <div className="h-0.5 bg-white w-full " ></div>
             {character ? (
-                <div className="text-center mb-40">
+                <div className="text-center mb-40 ">
                     <h1 className="text-3xl font-bold mb-6 mt-4">{character.name}</h1>
                     <img src="/images/characters-images/generic-image.png" alt="Imagen genérica de personaje" className="h-76 w-64 mb-4" />
                     {character.birth_year !== 'n/a' && character.birth_year !== 'unknown' && (
