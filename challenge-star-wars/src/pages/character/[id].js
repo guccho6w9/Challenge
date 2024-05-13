@@ -1,3 +1,6 @@
+//pagina detallada de personajes
+
+
 import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import '@/app/globals.css';
@@ -68,8 +71,9 @@ const CharacterDetailPage = () => {
             ) : (
                 <p className="mt-4">Cargando...</p>
             )}
-            {error && <p>Error: {error.message}</p>}
             <Footer />
+            {error && <p>Error: {error.message}</p>}
+            
         </div>
     );
 };

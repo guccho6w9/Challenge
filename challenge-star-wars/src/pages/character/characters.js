@@ -204,13 +204,13 @@ const CharactersPage = () => {
                             {/* mostrara 5 personajes por fila en pantallas grandes, 3 en tables y 2 en celulares. tiene efecto hover */}
                             <a
                           
-                                className=" flex flex-col items-center justify-center space-y-2 m-2 w-1/3 sm:w-1/5 md:w-1/4 lg:w-1/6 xl:w-1/6 2xl:w-1/6 p-2 hover:bg-white hover:bg-opacity-15 rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105 relative"
+                                className=" flex flex-col items-center justify-center space-y-2 m-2 w-1/3 sm:w-1/5 md:w-1/4 lg:w-1/6 xl:w-1/6 2xl:w-1/6 p-2 hover:bg-white hover:bg-opacity-15 rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105 relative mb-10"
                                 onMouseEnter={() => handleCharacterMouseEnter(index)}
                                 onMouseLeave={handleCharacterMouseLeave}
                             >
                                 {/* informacion de los personajes traida de la api */}
                                 <div className="h-80 flex flex-col">
-                                    <img src="/images/characters-images/generic-image.png" alt="Imagen genérica de personaje" className="w-38 h-auto mb-3" />
+                                    <img src="/images/characters-images/generic-image.png" alt="Imagen genérica de personaje" className="w-48 h-auto sm:w-64 sm:h-auto md:w-80 md:h-auto lg:w-96 lg:h-auto xl:w-full xl:h-auto 2xl:w-64 2xl:h-auto mb-3" />
                                     <div className="text-center">
                                         {/* nombre del personaje */}
                                         <h2 className="text-lg font-bold">{character.name}</h2>
