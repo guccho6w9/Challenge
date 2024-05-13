@@ -26,8 +26,25 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/*Animacion para el slider*/
+@keyframes marquee {
+  0% { transform: translateX(0%); } /* Empieza en la izquierda */
+  100% { transform: translateX(-33%); } /* Termina en la mitad */
+}
+
+.animate-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 10s linear infinite; /* Duración más corta */
+}
+
+.animate-marquee span {
+  margin-right: 30px; /* Espacio entre los mensajes */
 }

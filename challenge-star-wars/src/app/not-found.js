@@ -14,9 +14,9 @@ const Custom404 = () => {
           <h1 className="text-9xl font-bold">4</h1>
         </div>
         <p className="text-lg mt-6 mb-4 font-bold mt-5 ">"Great shot kid. That was one in a million."</p>
-        <p className="text-lg mt-6 mb-4 font-bold mt-5 mb-10">Parece que esta pagina no existe.</p>
+        <p className="text-lg mt-6 mb-4 font-bold mt-5 mb-20">Parece que esta pagina no existe.</p>
         <Link legacyBehavior href="/">
-          <a className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded border border-white py-2 px-4 ">Volvamos a casa</a>
+          <a className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded border border-white py-2 px-4 mb-40">Volvamos a casa</a>
         </Link>
       </div>
     </Layout>
