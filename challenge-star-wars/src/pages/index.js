@@ -53,6 +53,8 @@ function HomePage() {
         return () => clearInterval(interval);
     }, [currentImage]);
 
+
+
     return (
         <div>
             <Header />
@@ -66,7 +68,7 @@ function HomePage() {
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-10x1 font-bold">PELÍCULAS DESTACADAS </h1>
 
                 {/* caja del carrusel */}
-                <div className="carousel relative w-200 mb-40">
+                <div className="carousel relative w-200 mb-10">
 
                     <div className="relative ">
                         <Link legacyBehavior href={`/films/${images[currentImage].filmId}`}>
@@ -102,10 +104,11 @@ function HomePage() {
                                     src={image.src}
                                     alt={`Slide ${index + 1}`}
                                     className={`h-12 w-auto cursor-pointer ${currentImage === index ? 'blur' : ''} hidden lg:block mb-50`}
+
                                 />
                                 {/* Barra de color encima de la imagen si no tiene desenfoque */}
-                                {currentImage != index && ( 
-                                    <div className="absolute top-0 left-0 w-full h-1 bg-blue-500"></div> 
+                                {currentImage != index && (
+                                    <div className="absolute top-0 left-0 w-full h-1 bg-blue-500"></div>
                                 )}
 
                                 {/* Puntos en pantallas pequeñas */}
@@ -117,7 +120,20 @@ function HomePage() {
                         ))}
                     </div>
 
+
+
                 </div>
+
+                {/* slider largo de fondo blanco con texto, estilos definidos en globals.css para la animacion */}
+                <div className="bg-white py-3 overflow-hidden">
+                    <span className="text-black text-2x1 sm:text-3xl md:text-4xl lg:text-3xl xl:text-5xl 2xl:text-10x1 font-bold animate-marquee">
+                        <span>LA AMENAZA FANTASMA REGRESA A LOS CINES ESTE 24 DE MAYO</span>
+                        <span>LA AMENAZA FANTASMA REGRESA A LOS CINES ESTE 24 DE MAYO</span>
+                        <span>LA AMENAZA FANTASMA REGRESA A LOS CINES ESTE 24 DE MAYO</span>
+                    </span>
+                </div>
+
+
                 <h2> hola </h2>
             </div>
             <Footer />
