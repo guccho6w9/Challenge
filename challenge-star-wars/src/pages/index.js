@@ -63,7 +63,7 @@ function HomePage() {
 
 
             <div className="text-center mt-8">
-                <h1 className="text-4xl font-bold">PELÍCULAS DESTACADAS </h1>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-10x1 font-bold">PELÍCULAS DESTACADAS </h1>
 
                 {/* caja del carrusel */}
                 <div className="carousel relative w-200 mb-40">
@@ -76,7 +76,7 @@ function HomePage() {
                         </Link>
                         {/* Caja negra semitransparente con el título de la película en carrusel */}
                         <div className="absolute top-0 right-0 bg-black bg-opacity-50 text-white p-2 h-full w-1/2 flex items-center justify-center">
-                            <h2 className="sm:text-3xl lg:text-6xl xl:text-7xl text-lg font-bold">{images[currentImage].title}</h2>
+                            <h2 className="text-2x1 sm:text-4xl md:text-4xl lg:text-6xl xl:text-7xl text-lg font-bold">{images[currentImage].title}</h2>
                         </div>
                     </div>
 
@@ -92,20 +92,22 @@ function HomePage() {
 
                     {/* Puntos circulares para desplazarse entre imágenes */}
                     <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2 mb-2">
-                        
+
                         {/* Crear puntos para cada imagen */}
-                        
+
                         {images.map((image, index) => (
-                            
-                            <div key={index} onClick={() => handleImageClick(index)}>
-                                
-                                {/* Vista previa de la imagen como caja en pantallas grandes */}
+                            <div key={index} onClick={() => handleImageClick(index)} className="relative">
+                                {/* Vista previa de la imagen */}
                                 <img
                                     src={image.src}
                                     alt={`Slide ${index + 1}`}
                                     className={`h-12 w-auto cursor-pointer ${currentImage === index ? 'blur' : ''} hidden lg:block mb-50`}
-                                    
                                 />
+                                {/* Barra de color encima de la imagen si no tiene desenfoque */}
+                                {currentImage != index && ( 
+                                    <div className="absolute top-0 left-0 w-full h-1 bg-blue-500"></div> 
+                                )}
+
                                 {/* Puntos en pantallas pequeñas */}
                                 <FontAwesomeIcon
                                     icon={faCircle}
