@@ -1,3 +1,6 @@
+//pagina detallada de peliculas
+
+
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
@@ -77,14 +80,15 @@ const FilmDetailPage = () => {
             <div className="container mx-auto py-8">
 
                 {/* caja con la info de la pelicula */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                     <div>
                         <img className="h-auto w-full" src="/images/films-images/generic-image.png" alt="Imagen genérica" />
                     </div>
                     <div>
-                        <h1 className="text-5xl mb-6">{film.title}</h1>
-                        <h2 className='text-3x1'>Episodio: {film.episode_id}</h2>
-                        <p>Director: {film.director}</p>
+                        <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl 2xl:text-8x1 mb-1">{film.title}</h1>
+                        <h2 className='text-3x1 sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4x1'>Episodio: {film.episode_id}</h2>
+                        <p className='mb-2'>Director: {film.director}</p>
+                        {/* decidi traer el opening crawl solo porque se ve un poco mejor la pagina, no es parte de ningun requisito */}
                         <p>Opening crawl: {film.opening_crawl}</p>
                     </div>
                 </div>

@@ -48,11 +48,14 @@ const FilmsPage = () => {
       )}
 
       {/* Mostrar las películas si loading es falso */}
+
+      {/* Contenedor de peliculas */}
+
       {!loading && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-4 justify-center min-h-screen mb-40">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4 justify-center mb-40 min-h-screen">
           {films.map((film) => (
             
-            <div key={film.url} className="hover:bg-white hover:bg-opacity-15  rounded-lg transition duration-300">{/* hover sobre las cajas de peliculas */}
+            <div key={film.url} className="hover:bg-white hover:bg-opacity-15 h-96 rounded-lg transition duration-300">{/* hover sobre las cajas de peliculas */}
               <Link href={`/films/${film.url.split('/').slice(-2)[0]}`} legacyBehavior>
                 <a className="flex flex-col items-center">
                   <img className="w-58 h-80" src="/images/films-images/generic-image.png" alt="Imagen genérica" />
