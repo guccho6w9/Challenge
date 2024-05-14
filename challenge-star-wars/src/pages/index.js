@@ -54,7 +54,7 @@ function HomePage() {
 
     // arreglo de imagenes para la seccion de novedades
     const novedades = [
-        { src: "/images/index/novedades.jpeg", texto: "¿Entró toda? Las repeticiones holográficas muestran que..." },
+        { src: "/images/index/novedades.jpeg", texto: "¿Entró toda? Nuevas imagenes ineditas muestran que efectivamente..." },
         { src: "/images/index/novedades2.jpeg", texto: "Star wars llego a Fornite, enterate de todo lo que..." },
         { src: "/images/index/novedades3.jpeg", texto: "Una retrospectiva del 25 aniversario de la amenaza fantasma" },
         { src: "/images/index/novedades4.jpeg", texto: "Como un grupo de fanaticos salvo las peliculas originales" },
@@ -87,7 +87,7 @@ function HomePage() {
         const options = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.5
+            threshold: 0.2
         };
 
         let lastY = 0;
@@ -201,8 +201,8 @@ function HomePage() {
                         <div className="w-full sm:w-1/3 md:w-1/2 mt-8 md:mt-0 text-center">
                             <p className="text-md text-gray-400 mt-2">Nuevo en la galaxia?</p>
                             <h2 className="text-4xl sm:text-3x1 text-white font-bold">Star Wars: Guía para ver las películas y series</h2>
-                            <p className="text-md lg:text-md text-gray-400 mt-5">Si estás buscando saltar a Star Wars por primera vez, o eres un fanático desde hace mucho tiempo que se pone al día con los últimos lanzamientos, no temas; estamos aquí para rescatarte. Consulta las dos listas a continuación (orden de lanzamiento y orden cronológico) de cada película y serie de Star Wars, incluidas las de acción en vivo y animación, para ayudarte en tu viaje por esta galaxia.</p>
-                            <button className="bg-yellow-300 text-black rounded  px-3 py-2 mt-4">Vamos</button>
+                            <p className="text-md lg:text-md text-gray-400 mb-5 mt-5">Si estás buscando saltar a Star Wars por primera vez, o eres un fanático desde hace mucho tiempo que se pone al día con los últimos lanzamientos, no temas; estamos aquí para rescatarte. Consulta las dos listas a continuación (orden de lanzamiento y orden cronológico) de cada película y serie de Star Wars, incluidas las de acción en vivo y animación, para ayudarte en tu viaje por esta galaxia.</p>
+                            <button className="w-40 bg-yellow-300 text-black font-bold px-3 py-4 rounded-full self-end lg:self-auto mt-4 lg:mt-0"> Vamos! </button>
                         </div>
                     </div>
                 </div>
@@ -214,7 +214,7 @@ function HomePage() {
                     {/* título y botón "Ver Todas" */}
                     <div className='mb-20 lg:flex lg:justify-between items-center'>
                         <h2 className="text-2xl text-black font-bold lg:self-start">Últimas Novedades</h2>
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded-full self-end lg:self-auto mt-4 lg:mt-0">Ver Todas</button>
+                        <button className="bg-blue-500 text-white px-4 py-2 rounded-full self-end lg:self-auto mt-4 font-bold lg:mt-0">Ver Todas</button>
                     </div>
                     {/* botones para moverse entre novedades */}
                     <button onClick={prevPair} className="absolute text-white absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-500 bg-opacity-50 z-10">
