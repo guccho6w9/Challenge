@@ -17,6 +17,22 @@ function HomePage() {
     const [currentImage, setCurrentImage] = useState(0);
     const [showContent, setShowContent] = useState(false);
     const contentRef = useRef(null);
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const [currentPair, setCurrentPair] = useState(0); // Maneja el par de novedades actual
+
+    const prevPair = () => {
+        setCurrentPair((currentPair - 1 + novedades.length / 2) % (novedades.length / 2));
+    };
+
+    const nextPair = () => {
+        setCurrentPair((currentPair + 1) % (novedades.length / 2));
+    };
+
+    // Calcula los índices de las novedades actuales
+    const firstIndex = currentPair * 2;
+    const secondIndex = firstIndex + 1;
+
     //pequeño arreglo con las imagenes, id y titulo que muestran en el carrusel
     const images = [
         {
@@ -35,6 +51,16 @@ function HomePage() {
             filmId: 3
         }
     ];
+
+    // arreglo de imagenes para la seccion de novedades
+    const novedades = [
+        { src: "/images/index/novedades.jpeg", texto: "¿Entró toda? Las repeticiones holográficas muestran que..." },
+        { src: "/images/index/novedades2.jpeg", texto: "Star wars llego a Fornite, enterate de todo lo que..." },
+        { src: "/images/index/novedades3.jpeg", texto: "Una retrospectiva del 25 aniversario de la amenaza fantasma" },
+        { src: "/images/index/novedades4.jpeg", texto: "Como un grupo de fanaticos salvo las peliculas originales" },
+    ];
+
+
 
     // Función para moverse entre imágenes mediante los puntos y cuadros
     const handleImageClick = (index) => {
@@ -61,11 +87,11 @@ function HomePage() {
         const options = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.5 
+            threshold: 0.5
         };
-    
+
         let lastY = 0;
-    
+
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -79,18 +105,20 @@ function HomePage() {
                 lastY = window.scrollY;
             });
         }, options);
-    
+
         if (contentRef.current) {
             observer.observe(contentRef.current);
         }
-    
+
         return () => {
             if (contentRef.current) {
                 observer.unobserve(contentRef.current);
             }
         };
     }, []);
-    
+
+
+
 
 
 
@@ -130,7 +158,7 @@ function HomePage() {
                     <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2 mb-0">
                         {/* vista previa de las imagenes y puntos para moverse en el carrusel*/}
                         {images.map((image, index) => (
-                            
+
                             <div key={index} onClick={() => handleImageClick(index)} className="relative">
                                 <img
                                     src={image.src}
@@ -161,19 +189,19 @@ function HomePage() {
                         <span>LA AMENAZA FANTASMA REGRESA A LOS CINES ESTE 24 DE MAYO</span>
                     </span>
                 </div>
-                
+
 
                 {/* seccion "guia para ver star wars" */}
                 {/* Imagen y texto animado */}
                 <div ref={contentRef} className={`transition-all duration-500 ${showContent ? 'opacity-100 transform scale-y-100' : 'opacity-0 transform scale-y-0'}`}>
-                    <div className="flex flex-col items-center mt-16">
+                    <div className="flex flex-col items-center mt-16 mb-16">
                         <div className="w-3/4 md:w-1/2 flex justify-center">
                             <img src="/images/index/guide.jpg" alt="Imagen" className="rounded-2xl max-h-96 animate-from-bottom" />
                         </div>
                         <div className="w-full sm:w-1/3 md:w-1/2 mt-8 md:mt-0 text-center">
                             <p className="text-md text-gray-400 mt-2">Nuevo en la galaxia?</p>
-                            <h2 className="text-4xl sm:text-3x1 text-white font-bold">Star Wars guía para ver las películas y series</h2>
-                            <p className="text-gray-400 mt-5">Si estás buscando saltar a Star Wars por primera vez, o eres un fanático desde hace mucho tiempo que se pone al día con los últimos lanzamientos, no temas; estamos aquí para rescatarte. Consulta las dos listas a continuación (orden de lanzamiento y orden cronológico) de cada película y serie de Star Wars, incluidas las de acción en vivo y animación, para ayudarte en tu viaje por esta galaxia.</p>
+                            <h2 className="text-4xl sm:text-3x1 text-white font-bold">Star Wars: Guía para ver las películas y series</h2>
+                            <p className="text-md lg:text-md text-gray-400 mt-5">Si estás buscando saltar a Star Wars por primera vez, o eres un fanático desde hace mucho tiempo que se pone al día con los últimos lanzamientos, no temas; estamos aquí para rescatarte. Consulta las dos listas a continuación (orden de lanzamiento y orden cronológico) de cada película y serie de Star Wars, incluidas las de acción en vivo y animación, para ayudarte en tu viaje por esta galaxia.</p>
                             <button className="bg-yellow-300 text-black rounded  px-3 py-2 mt-4">Vamos</button>
                         </div>
                     </div>
@@ -181,29 +209,41 @@ function HomePage() {
 
 
 
-                {/* seccion "ultimas noticias" */}
-                <div className="bg-white py-8">
-                    <h2 className="text-2xl font-bold mb-4">Últimas Novedades</h2>
-                    <div className="flex items-center justify-between mb-4">
-                        <div className="rounded-lg shadow-lg w-1/2 bg-gray-200 p-4 mr-2">
-                            <img src="/images/placeholder.png" alt="Novedad 1" className="w-full h-auto mb-2" />
-                            <p className="text-gray-700">Descripción de la novedad 1</p>
+                {/* Sección "Últimas Novedades" */}
+                <div className="bg-white py-8 relative mb-20">
+                    {/* título y botón "Ver Todas" */}
+                    <div className='mb-20 lg:flex lg:justify-between items-center'>
+                        <h2 className="text-2xl text-black font-bold lg:self-start">Últimas Novedades</h2>
+                        <button className="bg-blue-500 text-white px-4 py-2 rounded-full self-end lg:self-auto mt-4 lg:mt-0">Ver Todas</button>
+                    </div>
+                    {/* botones para moverse entre novedades */}
+                    <button onClick={prevPair} className="absolute text-white absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-500 bg-opacity-50 z-10">
+                        <FontAwesomeIcon icon={faChevronLeft} size="2x" />
+                    </button>
+                    <button onClick={nextPair} className="absolute text-white absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-500 bg-opacity-50  z-10">
+                        <FontAwesomeIcon icon={faChevronRight} size="2x" />
+                    </button>
+
+                    {/* Caja de novedades */}
+                    <div className="flex flex-col lg:flex-row justify-center lg:justify-center items-center lg:items-start mt-8 lg:mt-14">
+                        <div onClick={() => { }} className="lg:w-80 bg-gray-200 p-4 mx-2 mb-4 lg:mb-0 relative cursor-pointer">
+                            <img src={novedades[firstIndex].src} alt={`Novedad ${firstIndex + 1}`} className="w-full h-52 lg:h-80 object-cover" />
+                            <div className="absolute bottom-0 bg-black bg-opacity-50 text-white p-2">
+                                <p>{novedades[firstIndex].texto.substring(0, 50)}...</p>
+                            </div>
                         </div>
-                        <div className="rounded-lg shadow-lg w-1/2 bg-gray-200 p-4 ml-2">
-                            <img src="/images/placeholder.png" alt="Novedad 2" className="w-full h-auto mb-2" />
-                            <p className="text-gray-700">Descripción de la novedad 2</p>
+                        <div onClick={() => { }} className="lg:w-80 bg-gray-200 p-4 mx-2 mb-4 lg:mb-0 relative cursor-pointer">
+                            <img src={novedades[secondIndex].src} alt={`Novedad ${secondIndex + 1}`} className="w-full h-52 lg:h-80 object-cover" />
+                            <div className="absolute bottom-0 bg-black bg-opacity-50 text-white p-2">
+                                <p>{novedades[secondIndex].texto.substring(0, 50)}...</p>
+                            </div>
                         </div>
                     </div>
-                    <div className="flex justify-end">
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded-full">Ver Todas</button>
-                    </div>
+
                 </div>
-                
 
 
 
-                <h2> hola </h2>
-                
             </div>
             <Footer />
         </div>
