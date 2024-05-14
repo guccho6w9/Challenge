@@ -128,30 +128,31 @@ function HomePage() {
             <Navbar />
             <div className="h-0.5 bg-white w-full mb-3"></div>
             <div className="text-center">
-                <h1 className="text-1xl sm:text-1xl md:text-1x3 lg:text-2xl xl:text-4xl 2xl:text-10xl font-bold mb-5 mt-5"> TODO SOBRE TUS CLASICOS FAVORITOS </h1>
+                <h1 className="text-1xl sm:text-1xl md:text-1x3 lg:text-2xl xl:text-2xl 2xl:text-10xl font-bold mb-5 mt-5"> TODO SOBRE TUS CLASICOS FAVORITOS </h1>
 
                 {/* seccion de cuadro de carrusel */}
-                <div className="carousel relative w-200  2xl:w-2/5 mx-auto mb-10 overflow-hidden">
+                <div className="carousel relative w-200   2xl:w-2/3 mx-auto mb-10 overflow-hidden">
                     <div className="relative ">
                         <Link legacyBehavior href={`/films/${images[currentImage].filmId}`}>
                             <a className='inline-block'>
                                 <img src={images[currentImage].src} alt={`Slide ${currentImage + 1}`} className="w-full h-auto rounded-lg" />
                             </a>
                         </Link>
-                        <div className="absolute top-0 right-0 bg-black bg-opacity-50 text-white p-2 h-full w-1/2 flex items-center justify-center">
-                            <h2 className="text-2xl sm:text-4xl md:text-4xl lg:text-6xl xl:text-7xl text-lg font-bold">{images[currentImage].title}</h2>
+                        {/* caja negra con el titulo */}
+                        <div className="absolute top-0 right-0 bg-black bg-opacity-50 text-white p-2 h-full w-1/2 flex items-center justify-start">
+                            <h2 className="text-2xl sm:text-4xl md:text-4xl lg:text-6xl xl:text-6xl  text-lg font-bold">{images[currentImage].title}</h2>
                         </div>
                     </div>
 
-                    {/* botones para mover imagenes hacia los lados */}
                     {/* moverse hacia la izquierda */}
-                    <button onClick={prevImage} className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-black text-white px-4 py-2 rounded-full bg-opacity-50">
-                        <FontAwesomeIcon icon={faChevronLeft} />
+                    <button onClick={prevImage} className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-black text-white px-4 py-2 rounded-full border border-white bg-opacity-50 active:bg-gray-700 active:bg-opacity-75">
+                        <FontAwesomeIcon icon={faChevronLeft} size='2x'/>
                     </button>
                     {/* moverse hacia la derecha */}
-                    <button onClick={nextImage} className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-black text-white px-4 py-2 rounded-full bg-opacity-50">
-                        <FontAwesomeIcon icon={faChevronRight} />
+                    <button onClick={nextImage} className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-black text-white px-4 py-2 rounded-full border border-white bg-opacity-50 active:bg-gray-700 active:bg-opacity-75">
+                        <FontAwesomeIcon icon={faChevronRight} size='2x'/>
                     </button>
+
 
 
 
@@ -210,22 +211,22 @@ function HomePage() {
 
 
                 {/* Sección "Últimas Novedades" */}
-                <div className="bg-white py-8 relative mb-20">
+                <div className="bg-white py-3 relative mb-20">
                     {/* título y botón "Ver Todas" */}
-                    <div className='mb-20 lg:flex lg:justify-between items-center'>
+                    <div className='mb-2 lg:flex lg:justify-between items-center'>
                         <h2 className="text-2xl text-black font-bold lg:self-start">Últimas Novedades</h2>
                         <button className="bg-blue-500 text-white px-4 py-2 rounded-full self-end lg:self-auto mt-4 font-bold lg:mt-0">Ver Todas</button>
                     </div>
                     {/* botones para moverse entre novedades */}
-                    <button onClick={prevPair} className="absolute text-white absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-500 bg-opacity-50 z-10">
-                        <FontAwesomeIcon icon={faChevronLeft} size="2x" />
+                    <button onClick={prevPair} className="absolute text-white absolute left-4 top-1/2 transform -translate-y-1/2 bg-blue-500 bg-opacity-50 rounded active:bg-gray-700 active:bg-opacity-75 z-10">
+                        <FontAwesomeIcon icon={faChevronLeft} size="4x" />
                     </button>
-                    <button onClick={nextPair} className="absolute text-white absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-500 bg-opacity-50  z-10">
-                        <FontAwesomeIcon icon={faChevronRight} size="2x" />
+                    <button onClick={nextPair} className="absolute text-white absolute right-4 top-1/2 transform -translate-y-1/2 bg-blue-500 bg-opacity-50 rounded active:bg-gray-700 active:bg-opacity-75 z-10">
+                        <FontAwesomeIcon icon={faChevronRight} size="4x" />
                     </button>
 
                     {/* Caja de novedades */}
-                    <div className="flex flex-col lg:flex-row justify-center lg:justify-center items-center lg:items-start mt-8 lg:mt-14">
+                    <div className="flex flex-col lg:flex-row justify-center lg:justify-center items-center lg:items-start mt-8 mb-20 lg:mt-14">
                         <div onClick={() => { }} className="lg:w-80 bg-gray-200 p-4 mx-2 mb-4 lg:mb-0 relative cursor-pointer">
                             <img src={novedades[firstIndex].src} alt={`Novedad ${firstIndex + 1}`} className="w-full h-52 lg:h-80 object-cover" />
                             <div className="absolute bottom-0 bg-black bg-opacity-50 text-white p-2">
