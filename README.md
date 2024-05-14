@@ -1,5 +1,6 @@
 # Neowyze_challenge
 # Aplicacion web con motivo de peliculas de Star Wars
+# Hecho con next.js version @14.2.3 y tailwind version 3.4.3
 
 ## instalar la biblioteca font awesome para los iconos!!
 
