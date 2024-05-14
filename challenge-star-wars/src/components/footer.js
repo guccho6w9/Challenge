@@ -18,7 +18,7 @@ const Footer = () => {
     //cuerpo del footer
     return (
         <footer className="bg-gray-800 bg-transparent text-white text-center py-4">
-            <p className='text-white font-bold'>Contacto</p>
+        
             <p> {/*mensaje de mi autoria y copar email */}
                 Desarollado por Gustavo A. Quiroga |{' '}
                 <span className="cursor-pointer underline" onClick={handleCopyEmail}>
