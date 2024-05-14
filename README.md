@@ -10,7 +10,7 @@ npm install --save @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg
 
 npm install @fortawesome/free-brands-svg-icons
 
-Este es una aplicacion web que permite acceder a la informacion de las peliculas de star wars con la api Swapi, permite acceder a informacion de peliculas y personajes de las mismas.
+### Este es una aplicacion web que permite acceder a la informacion de las peliculas de star wars con la api Swapi, permite acceder a informacion de peliculas y personajes de las mismas.
 
 # Características Principales
 
