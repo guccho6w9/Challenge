@@ -25,6 +25,8 @@ Posee botones para moverse en el carrusel de izquierda a derecha, botones circul
 
 - Sección de Últimas Novedades: Presenta las noticias en forma de un slider, con botones de navegación para desplazarse entre ellas, las imagenes y texto de la noticia estan guardadas en un pequeño array.
 
+- Pagina de error 404 personaliada en caso de acceder a una url que no existe 
+
 - ### Página de Películas (Films): Una página dedicada a listar todas las películas de Star Wars, con imágen generica, nombre y episodio, permitiendo a los usuarios acceder fácilmente a información detallada sobre cada película.
 
 - Página de Detalles de Películas: Proporciona información detallada sobre una película seleccionada, incluyendo imágen generica, título, episodio, director y el famoso opening crawl solo por estetica, así como una lista de personajes que aparecen en esa película y su url.
