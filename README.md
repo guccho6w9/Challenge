@@ -3,10 +3,10 @@
 
 ## instalar la biblioteca font awesome para los iconos!!
 
-iconos basicos:
+- iconos basicos:
 
-npm install --save @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
-iconos de marcas como whatsapp o linkedin: 
+npm install --save @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome  
+- iconos de marcas como whatsapp o linkedin: 
 
 npm install @fortawesome/free-brands-svg-icons
 
