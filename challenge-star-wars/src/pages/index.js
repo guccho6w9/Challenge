@@ -54,10 +54,10 @@ function HomePage() {
 
     // arreglo de imagenes para la seccion de novedades
     const novedades = [
-        { src: "/images/index/novedades.webp", texto: "¿Entró toda? Nuevas imagenes ineditas muestran que efectivamente..." },
-        { src: "/images/index/novedades2.webp", texto: "Star wars llego a Fornite, enterate de todo lo que..." },
-        { src: "/images/index/novedades3.webp", texto: "Una retrospectiva del 25 aniversario de la amenaza fantasma" },
-        { src: "/images/index/novedades4.webp", texto: "Como un grupo de fanaticos salvo las peliculas originales" },
+        { src: "/images/Index/novedades.webp", texto: "¿Entró toda? Nuevas imagenes ineditas muestran que efectivamente..." },
+        { src: "/images/Index/novedades2.webp", texto: "Star wars llego a Fornite, enterate de todo lo que..." },
+        { src: "/images/Index/novedades3.webp", texto: "Una retrospectiva del 25 aniversario de la amenaza fantasma" },
+        { src: "/images/Index/novedades4.webp", texto: "Como un grupo de fanaticos salvo las peliculas originales" },
     ];
 
 
@@ -180,6 +180,7 @@ function HomePage() {
                     </div>
 
                 </div>
+
                 {/* Imagen del mockup */}
                 <div className="w-60 h-96  lg:h-96 lg:w-60 bg-red-200 rounded-2xl overflow-hidden mx-auto mb-10 lg:mb-0 flex justify-center" size="2x">
                     <img src="/images/Index/mockup-phone.webp" alt="Mockup de la aplicación" className="object-cover" />
