@@ -56,10 +56,10 @@ function HomePage() {
 
     // arreglo de imagenes para la seccion de novedades
     const novedades = [
-        { src: "/images/index/novedades.jpeg", texto: "¿Entró toda? Nuevas imagenes ineditas muestran que efectivamente..." },
-        { src: "/images/index/novedades2.jpeg", texto: "Star wars llego a Fornite, enterate de todo lo que..." },
-        { src: "/images/index/novedades3.jpeg", texto: "Una retrospectiva del 25 aniversario de la amenaza fantasma" },
-        { src: "/images/index/novedades4.jpeg", texto: "Como un grupo de fanaticos salvo las peliculas originales" },
+        { src: "/images/index/novedades.webp", texto: "¿Entró toda? Nuevas imagenes ineditas muestran que efectivamente..." },
+        { src: "/images/index/novedades2.webp", texto: "Star wars llego a Fornite, enterate de todo lo que..." },
+        { src: "/images/index/novedades3.webp", texto: "Una retrospectiva del 25 aniversario de la amenaza fantasma" },
+        { src: "/images/index/novedades4.webp", texto: "Como un grupo de fanaticos salvo las peliculas originales" },
     ];
 
 
