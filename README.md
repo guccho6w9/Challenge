@@ -1,6 +1,6 @@
 # Neowyze_challenge
 
-### deploy en vercel, unas imagenes no cargan pero creo que es por el limite de ancho de banda
+### deploy en vercel
 
 https://challenge-mu-seven.vercel.app/
 cd
