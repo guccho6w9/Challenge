@@ -131,7 +131,7 @@ const CharactersPage = () => {
                 <div className="relative">
                     <FontAwesomeIcon
                         icon={faFilter}
-                        className="text-gray-500 cursor-pointer" size="2x"
+                        className="text-red-300 cursor-pointer" size="2x"
                         onClick={() => setShowFilterMenu(!showFilterMenu)}
                     />
                     {showFilterMenu && (
@@ -174,7 +174,7 @@ const CharactersPage = () => {
                                     <option value="n/a">No especificado</option>
                                 </select>
                             </div>
-                            <button onClick={handleResetFilters} className="mt-2 px-2 py-1 bg-gray-200 hover:bg-gray-300 rounded-md text-black">Restablecer</button>
+                            <button onClick={handleResetFilters} className="mt-2 px-2 py-1 bg-gray-200 hover:bg-red-300 rounded-md text-black">Restablecer</button>
                         </div>
                     )}
                 </div>
@@ -229,7 +229,7 @@ const CharactersPage = () => {
                                             <div className=" bottom-0">
                                                 <FontAwesomeIcon
                                                     icon={faChevronDown}
-                                                    className="text-white text-2xl"
+                                                    className="text-red-300 text-2xl"
                                                 />
                                             </div>
                                         )}
