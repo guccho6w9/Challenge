@@ -184,7 +184,7 @@ function HomePage() {
                 </div>
                 {/* Imagen del mockup */}
                 <div className="w-60 h-96  lg:h-96 lg:w-60 bg-red-200 rounded-2xl overflow-hidden mx-auto mb-10 lg:mb-0 flex justify-center" size="2x">
-                    <img src="/images/Index/mockup-phone.png" alt="Mockup de la aplicación" className="object-cover" />
+                    <img src="/images/Index/mockup-phone.webp" alt="Mockup de la aplicación" className="object-cover" />
                 </div>
             </div>
 
@@ -262,7 +262,7 @@ function HomePage() {
                 <div ref={contentRef} className={`transition-all duration-500 ${showContent ? 'opacity-100 transform scale-y-100' : 'opacity-0 transform scale-y-0'}`}>
                     <div className="flex flex-col items-center mt-16 mb-16">
                         <div className="w-3/4 md:w-1/2 flex justify-center">
-                            <img src="/images/index/guide.jpg" alt="Imagen" className="rounded-2xl max-h-96 animate-from-bottom" />
+                            <img src="/images/index/guide.webp" alt="Imagen" className="rounded-2xl max-h-96 animate-from-bottom" />
                         </div>
                         <div className="w-full sm:w-1/3 md:w-1/2 mt-8 md:mt-0 text-center">
                             <p className="text-md text-gray-400 mt-2">Nuevo en la galaxia?</p>
