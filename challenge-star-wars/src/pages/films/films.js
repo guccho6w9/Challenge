@@ -58,7 +58,7 @@ const FilmsPage = () => {
             <div key={film.url} className="hover:bg-red-300 hover:bg-opacity-35 h-96 rounded-lg transition duration-300">{/* hover sobre las cajas de peliculas */}
               <Link href={`/films/${film.url.split('/').slice(-2)[0]}`} legacyBehavior>
                 <a className="flex flex-col items-center">
-                  <img className="w-58 h-80" src="/images/films-images/generic-image.png" alt="Imagen genérica" />
+                  <img className="w-58 h-80" src="/images/films-images/generic-image.webp" alt="Imagen genérica" />
                   {/* titulo de pelicula */}
                   <h2 className="text-center font-bold">{film.title}</h2>
                   {/* episodio */}

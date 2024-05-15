@@ -82,7 +82,7 @@ const FilmDetailPage = () => {
                 {/* caja con la info de la pelicula */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 mx-4">
                     <div>
-                        <img className="h-auto w-full" src="/images/films-images/generic-image.png" alt="Imagen genérica" />
+                        <img className="h-auto w-full" src="/images/films-images/generic-image.webp" alt="Imagen genérica" />
                     </div>
                     <div>
                         <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl 2xl:text-8x1 mb-1">{film.title}</h1>
@@ -93,15 +93,19 @@ const FilmDetailPage = () => {
                     </div>
                 </div>
 
-                {/* caja con los personajes */}
+                {/* info de personajes */}
                 <div>
                     <div className="h-0.5 bg-white w-full mb-6"></div>
                     <h2 className="text-3xl font-bold mb-5"> Personajes </h2>
+
+                    {/* caja de personajes */}
                     <div className=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 mx-4">
                         {characters.map((character) => (
                             <div key={character.url}>
+                                {/* url de personaje */}
                                 <Link href={`/character/${character.url.split('/').slice(-2)[0]}`} legacyBehavior>
                                     <a>
+                                        {/* imagen generica */}
                                         <img className="w-full h-auto mb-2" src="/images/characters-images/generic-image.png" alt="Imagen genérica" />
                                         <p className='font-bold'>{character.name}</p>
                                     </a>
