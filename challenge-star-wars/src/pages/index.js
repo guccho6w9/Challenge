@@ -16,21 +16,19 @@ import Footer from '@/components/footer'; //importado footer.js
 
 
 function HomePage() {
-    const [currentImage, setCurrentImage] = useState(0);
-    const [showContent, setShowContent] = useState(false);
+    const [currentImage, setCurrentImage] = useState(0); //variable que maneja la imagen principal del carrusel
+    const [showContent, setShowContent] = useState(false); // variables para mostrar la imagen con animacion
     const contentRef = useRef(null);
-
-
     const [currentPair, setCurrentPair] = useState(0); // Maneja el par de novedades actual
 
+    // calculo para cambiar la pagina de novedades, ir a siguiente 
     const prevPair = () => {
         setCurrentPair((currentPair - 1 + novedades.length / 2) % (novedades.length / 2));
     };
-
+    // calculo para cambiar la pagina de novedades, ir a previa
     const nextPair = () => {
         setCurrentPair((currentPair + 1) % (novedades.length / 2));
     };
-
     // Calcula los índices de las novedades actuales
     const firstIndex = currentPair * 2;
     const secondIndex = firstIndex + 1;
