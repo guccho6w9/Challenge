@@ -80,7 +80,7 @@ const FilmDetailPage = () => {
             <div className="container mx-auto py-8">
 
                 {/* caja con la info de la pelicula */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 mx-4">
                     <div>
                         <img className="h-auto w-full" src="/images/films-images/generic-image.png" alt="Imagen genérica" />
                     </div>
@@ -97,7 +97,7 @@ const FilmDetailPage = () => {
                 <div>
                     <div className="h-0.5 bg-white w-full mb-6"></div>
                     <h2 className="text-3xl font-bold mb-5"> Personajes </h2>
-                    <div className=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 ">
+                    <div className=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 mx-4">
                         {characters.map((character) => (
                             <div key={character.url}>
                                 <Link href={`/character/${character.url.split('/').slice(-2)[0]}`} legacyBehavior>
