@@ -17,7 +17,11 @@ npm install @fortawesome/free-brands-svg-icons
 
 - Componentes Modulares: La aplicación está estructurada con componentes modulares como el encabezado (Header) con logotivo de star wars que lleva al index, la barra de navegación con botones para desplzarse entre las paginas (Navbar) y el pie de página (Footer) con info de contacto, facilitando su reutilización y mantenimiento en diferentes páginas y plantillas.
 
-- Página de Inicio (Index): Incluye un carrusel de imágenes responsive que muestra acceso directo a 3 clasicos de Star Wars, permitiendo a los usuarios explorarlas fácilmente.
+- ### index.js incluye:
+
+- Seccion de app movil: Seccion con imagen png dentro de un cuadro de color y texto publicitario con botones para descargar una aplicacion movil.
+
+- Carrusel: carrusel de imágenes responsive que muestra acceso directo a 3 clasicos de Star Wars, permitiendo a los usuarios explorarlas fácilmente.
 Posee botones para moverse en el carrusel de izquierda a derecha, botones circulares para eligar una imagen en pantallas medianas y vista previa de la imagen como navegacion en pantallas grandes.
 
 - Slider de Noticias en loop: Un slider que muestra noticias relevantes del universo Star Wars con texto en un loop continuo, proporcionando información actualizada de manera dinámica.
