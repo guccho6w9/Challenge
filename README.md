@@ -3,7 +3,7 @@
 ### deploy en vercel
 
 https://challenge-mu-seven.vercel.app/
-cd
+
 # Aplicacion web con motivo de peliculas de Star Wars
 ## Hecho con next.js version @14.2.3 y tailwind version 3.4.3
 
