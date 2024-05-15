@@ -2,8 +2,8 @@
 
 ### deploy en vercel, unas imagenes no cargan pero creo que es por el limite de ancho de banda
 
-https://neowyze-challenge.vercel.app/
-
+https://challenge-mu-seven.vercel.app/
+cd
 # Aplicacion web con motivo de peliculas de Star Wars
 ## Hecho con next.js version @14.2.3 y tailwind version 3.4.3
 
