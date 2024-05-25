@@ -19,6 +19,7 @@ const CharactersPage = () => {
         gender: 'all',
         sortOrder: 'none' // Nuevo estado para el orden de nombres
     });
+    const [searchTerm, setSearchTerm] = useState(''); // Nuevo estado para el término de búsqueda
     const [showFilterMenu, setShowFilterMenu] = useState(false);
     const [selectedCharacterIndex, setSelectedCharacterIndex] = useState(null);
 
@@ -58,6 +59,9 @@ const CharactersPage = () => {
                     return character.gender === filterOptions.gender;
                 }
             }
+            if (searchTerm) {
+                return character.name.toLowerCase().includes(searchTerm.toLowerCase());
+            }
             return true;
         });
 
@@ -72,7 +76,7 @@ const CharactersPage = () => {
         const totalPages = Math.ceil(filtered.length / 10);
         setTotalPages(totalPages);
         setCurrentPage(1);
-    }, [characters, filterOptions]);
+    }, [characters, filterOptions, searchTerm]);
 
     const paginatedCharacters = filteredCharacters.slice((currentPage - 1) * 10, currentPage * 10);
 
@@ -112,7 +116,17 @@ const CharactersPage = () => {
             <Header />
             <Navbar />
             <div className="h-0.5 bg-white w-full mb-6"></div>
-            <h1 className="text-4xl text-center font-bold mb-6"> PERSONAJES </h1>
+            <h1 className="text-4xl text-center font-bold mb-6">PERSONAJES</h1>
+            {/* barra de busqueda */}
+            <div className="flex justify-center mb-4 mx-4">
+                <input
+                    type="text"
+                    placeholder="Buscar personajes..."
+                    className="w-full max-w-md p-2 border border-gray-300 rounded-full text-black"
+                    value={searchTerm}
+                    onChange={e => setSearchTerm(e.target.value)}
+                />
+            </div>
             <div className="flex justify-end mr-4">
                 <div className="relative">
                     <FontAwesomeIcon
@@ -160,7 +174,6 @@ const CharactersPage = () => {
                                     <option value="n/a">No especificado</option>
                                 </select>
                             </div>
-                            {/* Nuevo select para el orden de nombres */}
                             <div className="mt-2">
                                 <label htmlFor="sortOrder" className="mr-2 text-black font-bold"> Nombre </label>
                                 <select
