@@ -1,4 +1,4 @@
-# Neowyze_challenge
+# Pagina de Star Wars
 
 ### deploy en vercel
 
@@ -41,7 +41,7 @@ Posee botones para moverse en el carrusel de izquierda a derecha, botones circul
 
 - Página de Detalles de Películas: Proporciona información detallada sobre una película seleccionada, incluyendo imágen generica, título, episodio, director y el famoso opening crawl solo por estetica, así como una lista de personajes que aparecen en esa película y su url.
 
-- ### Página de Personajes (Characters): Ofrece una lista responsive paginada de todos los personajes de Star Wars traida desde la api en su totalidad antes de cargar, con la capacidad de filtrarlos por color de ojos, género o ambos, lo que permite una navegación fácil, fluida y personalizada. Tambien posee una imagen y texto notificando si ningun personaje entra en el filtro.
+- ### Página de Personajes (Characters): Ofrece una lista responsive paginada de todos los personajes de Star Wars traida desde la api en su totalidad antes de cargar, posee una barra de busqueda para buscar personajes por nombre y cuenta con la capacidad de filtrarlos por color de ojos, género o ambos, lo que permite una navegación fácil, fluida y personalizada. Tambien posee una imagen y texto notificando si ningun personaje entra en el filtro.
 
 - Página de Detalles de Personajes: Muestra información detallada de un personaje seleccionado, incluyendo nombre, altura, masa, año de nacimiento, color de pelo, piel y ojos, proporcionando una visión más profunda de los personajes favoritos de los usuarios.
 
